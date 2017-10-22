@@ -9,6 +9,6 @@ var subscriptionSchema = new Schema({
     deviceOsVersion: String
 });
 
-var Subscription = mongoose.model('subscription', subscriptionSchema );
+var Subscriptions = mongoose.model('Subscriptions', subscriptionSchema );
 
-module.exports = Subscription;
+module.exports = Subscriptions;

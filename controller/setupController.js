@@ -3,6 +3,7 @@ var Subscription = require('../model/subscriptionModel');
 module.exports = function (app){
 
     app.get('/api/setupSubscriptions', function(req, res){
+        console.log("preparando subscriptions...");
         var starterSubscriptions = [
             {
                 "username": "UPN5",
@@ -25,9 +26,8 @@ module.exports = function (app){
         ];
 
         Subscription.create(starterSubscriptions, function(err, result){
+            console.log("criando subscriptions...");
             res.send(result);
         });
     });
-
-    
 }
