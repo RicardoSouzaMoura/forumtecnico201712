@@ -1,4 +1,4 @@
-var Subscription = require('../model/subscriptionModel');
+var Subscriptions = require('../model/subscriptionModel');
 var bodyParser = require('body-parser');
 
 module.exports = function (app){
@@ -7,7 +7,7 @@ module.exports = function (app){
     app.use(bodyParser.urlencoded({extended: true}));
 
     app.post('/api/subscription', function(req, res){
-        var newSubscription = Subscription({
+        var newSubscription = Subscriptions({
             username: req.body.username,
             deviceModel: req.body.deviceModel,
             deviceType: req.body.deviceType,
@@ -20,7 +20,7 @@ module.exports = function (app){
     });
 
     app.get('/api/subscriptions', function(req, res){
-        Subscription.find(function(err, result){
+        Subscriptions.find(function(err, result){
             if (err) throw err;
             res.send(result);
         });
