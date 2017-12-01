@@ -50,16 +50,18 @@ module.exports = function (app){
              superagent.post('https://wdsmph.petrobras.com.br:9081/restnotification/application/br.com.petrobras.forumtecnico201712')
                 .send(body)
                 .set('Authorization', authToken)
-                .end((err, res) => {
-                     if (err) { 
+                .end((errSmp, resSmp) => {
+                     if (errSmp) {
                         console.log("!!! Error !!!");
-                        console.log(err); 
+                        console.log(errSmp); 
+                        res.statusCode = resSmp.statusCode;
+                        res.send('{"result":"Erro ao enviar push"}');
                      }
-                    console.log("!!! Sucesso !!!");
-                    console.log(res.body);
-                });
+                    console.log("!!! Sucesso - push enviado !!!");
+                    console.log(resSmp.body);
+                    res.send('{"result":"Successo ao enviar push"}');
+            });
 
-            res.send("Success 2");
         });
 
         //     var body = {
